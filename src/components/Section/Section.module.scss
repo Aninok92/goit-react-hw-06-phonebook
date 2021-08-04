@@ -1,0 +1,16 @@
+.section {
+  width: 500px;
+  margin: 0 auto 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background: var(--primary-white-color);
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--primary-text-color);
+  margin: 15px 0;
+  text-align: center;
+}

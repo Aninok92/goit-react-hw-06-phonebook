@@ -1,0 +1,32 @@
+@import "styles/shared.module.scss";
+@import "styles/button.module.scss";
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.labelText {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+  margin-left: 15px;
+  margin-bottom: 4px;
+}
+
+.input {
+  font-size: 20px;
+  width: 100%;
+  padding: 8px 20px;
+  // margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 4px;
+  outline: none;
+  transition: border var(--transition-duration)
+    var(--transition-timing-function);
+  &:focus {
+    border: 3px solid var(--broun-color);
+  }
+}

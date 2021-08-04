@@ -1,0 +1,28 @@
+@import "styles/shared.module.scss";
+
+.label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.labelText {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--broun-color);
+  margin-right: 15px;
+  margin-bottom: 4px;
+}
+
+.input {
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 4px;
+  padding: 5px 12px;
+  outline: none;
+  transition: border var(--transition-duration)
+    var(--transition-timing-function);
+  &:focus {
+    border: 3px solid var(--broun-color);
+  }
+}
