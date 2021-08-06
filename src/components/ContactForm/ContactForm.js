@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import shortid from "shortid";
+import contactsActions from "../../redux/contacts/contacts-actions";
 import s from "./ContactForm.module.scss";
+import { connect } from "react-redux";
 
 function ContactForm({ contacts, onSubmit }) {
   const [name, setName] = useState("");
@@ -87,6 +89,15 @@ function ContactForm({ contacts, onSubmit }) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  contacts: state.contacts.items,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (name, number) =>
+    dispatch(contactsActions.addContact(name, number)),
+});
+
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
@@ -97,4 +108,4 @@ ContactForm.propTypes = {
   ),
 };
 
-export default ContactForm;
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
