@@ -26,34 +26,6 @@ function App() {
   //   window.localStorage.setItem("contacts", JSON.stringify(contacts));
   // }, [contacts]);
 
-  // const addContact = (name, number) => {
-  //   const newContact = {
-  //     id: shortid.generate(),
-  //     name,
-  //     number,
-  //   };
-
-  //   setContacts([newContact, ...contacts]);
-  // };
-
-  // const changeFilter = (e) => {
-  //   setFilter(e.currentTarget.value);
-  // };
-
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
-
-  //   return contacts.filter((contact) =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-
-  // const deleteContact = (name) => {
-  //   setContacts(contacts.filter((contact) => contact.name !== name));
-  // };
-
-  // const visibleContacts = getVisibleContacts();
-
   return (
     <Container>
       <Section title="Phonebook">
