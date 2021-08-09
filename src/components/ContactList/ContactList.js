@@ -1,39 +1,31 @@
 import PropTypes from "prop-types";
+import { ImBin } from "react-icons/im";
+import { useSelector, useDispatch } from "react-redux";
+import { getVisibleContacts } from "../../redux/contacts/contacts-selectors";
+import contactsActions from "../../redux/contacts/contacts-actions";
 import Button from "../Button/ButtonTypeButton";
 import ContactItem from "../ContactItem/ContactItem";
-import { ImBin } from "react-icons/im";
 import s from "./ContactList.module.scss";
-import { connect } from "react-redux";
-import contactsActions from "../../redux/contacts/contacts-actions";
 
-const ContactList = ({ contacts, onDeleteContact }) => (
-  <ul className={s.list}>
-    {contacts.map(({ id, name, number }) => (
-      <li className={s.item} key={id}>
-        <ContactItem name={name} number={number} />
-        <Button onClick={() => onDeleteContact(name)}>
-          <ImBin /> Delete
-        </Button>
-      </li>
-    ))}
-  </ul>
-);
+const ContactList = () => {
+  const contacts = useSelector(getVisibleContacts);
+  const dispatch = useDispatch();
+  const onDeleteContact = (name) =>
+    dispatch(contactsActions.deleteContact(name));
 
-const getVisibleContacts = (allContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return allContacts.filter((contact) =>
-    contact.name.toLowerCase().includes(normalizedFilter)
+  return (
+    <ul className={s.list}>
+      {contacts.map(({ id, name, number }) => (
+        <li className={s.item} key={id}>
+          <ContactItem name={name} number={number} />
+          <Button onClick={() => onDeleteContact(name)}>
+            <ImBin /> Delete
+          </Button>
+        </li>
+      ))}
+    </ul>
   );
 };
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-  contacts: getVisibleContacts(items, filter),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onDeleteContact: (name) => dispatch(contactsActions.deleteContact(name)),
-});
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
@@ -41,7 +33,6 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
-  onDeleteContact: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default ContactList;
